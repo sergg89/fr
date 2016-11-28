@@ -1,0 +1,10 @@
+base_url: http://test.zipcap.com/api/v1
+db_charset: utf8mb4
+db_host: 127.0.0.1
+db_name: zipcap_test
+db_password: ^lMyrQ3S)r
+db_port: 9870
+db_user: admin
+member_id_payment: 1914
+member_id_transaction: 1914
+token: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTUwLCJpYXQiOjE0Nzg4NzkxNDN9.BgXDp-2lUD5jGFA2t_dUZhLVS0ncuUf-KnoGTGGV2CU

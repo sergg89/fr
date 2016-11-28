@@ -1,0 +1,4 @@
+[2903:775:1128/120208:INFO:CONSOLE(6)] "SW registered", source: https://www.google.com/_/chrome/newtab?espv=2&ie=UTF-8 (6)
+[2903:775:1128/120320:WARNING:pref_notifier_impl.cc(27)] pref observer found at shutdown printing.enabled
+[2903:775:1128/120320:WARNING:pref_notifier_impl.cc(27)] pref observer found at shutdown plugins.always_authorize
+[2903:775:1128/120320:WARNING:pref_notifier_impl.cc(27)] pref observer found at shutdown plugins.allow_outdated
