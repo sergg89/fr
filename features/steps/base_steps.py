@@ -106,7 +106,10 @@ def make_a_request(context, http_verb, url_path_segment):
     url = context.base_url + url_path_segment + param_part
     print(url)
     print(context.body)
-    context.r = getattr(requests, http_verb.lower())(url, headers=context.headers, data=json.dumps(context.body))
+    if http_verb == "GET":
+        context.r = getattr(requests, http_verb.lower())(url, headers=context.headers)
+    else:
+        context.r = getattr(requests, http_verb.lower())(url, headers=context.headers, data=json.dumps(context.body))
     log_full(context.r)
     return context.r
 
@@ -192,13 +195,15 @@ def json_object_validation(context, json_path, expected_json_value):
 def step_impl(context, json_path, var):
     data = context.r.json()
     value = get_part_of_json(data, json_path)
+    print(value)
     if var == 'token':
-        value = 'Bearer ' + value
+        value = value
     settings = yaml.load(open(BASE_DIR + '/features/config.yaml').read())
     settings.update({var: value})
     with open(BASE_DIR + '/features/config.yaml', 'w') as yaml_file:
         yaml.dump(settings, yaml_file, default_flow_style=False)
     context.__setattr__(var, value)
+    print('context-token = %s '%context.token)
 
 
 @step("I compare {val1} and {val2} it should be {is_equal}")

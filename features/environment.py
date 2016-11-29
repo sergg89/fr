@@ -9,17 +9,16 @@ import subprocess
 
 
 
-
-def before_all(context):
+def before_scenario(context, scenario):
     context.settings = load(open(BASE_DIR + '/features/config.yaml').read())
     for key in context.settings.keys():
-        context.__setattr__(key, context.settings.get(key))
+        context.__setattr__(key, context.settings[key])
     context.sql = ''
     context.body = {}
     context.headers = {}
     context.json_responses = json_responses
-    subprocess.call(['ssh -i /Users/gorbanenko_cr/Documents/ssh/id_rsa -fNL 9870:db1:3306 dev@feature.zipcap.com'],
-     shell=True)
+    #subprocess.call(['ssh -i /Users/gorbanenko_cr/Documents/ssh/id_rsa -fNL 9870:db1:3306 dev@feature.zipcap.com'],
+    # shell=True)
 
 
 
