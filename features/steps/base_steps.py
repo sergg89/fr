@@ -84,6 +84,16 @@ def log_full(r):
 
 @step('I make a {http_verb} request to "{url_path_segment}"')
 def make_a_request(context, http_verb, url_path_segment):
+    url_parts = (url_path_segment.split('/'))
+    url_parts.pop(0)
+    url_path_segment = '/'
+    for part in url_parts:
+        if part.startswith("context"):
+            elem = str(eval(part))
+        else:
+            elem = part
+        url_path_segment += elem + '/'
+    url_path_segment = url_path_segment[:-1]
     print(context.headers)
     print(context.body)
     if context.table:
@@ -94,7 +104,7 @@ def make_a_request(context, http_verb, url_path_segment):
             if param.startswith("context"):
                 param = eval(param)
             if value.startswith("context"):
-                value = eval(value)
+                value = str(eval(value))
             params.update({param: value})
         param_part = '?'
         for key in params.keys():
