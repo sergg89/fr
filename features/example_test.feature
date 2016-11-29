@@ -74,3 +74,4 @@
 #    And JSON at path ".state" should equal "NY"
 #    And JSON at path ".city" should equal "NY"
 #    And JSON at path ".zip_code" should equal "10008"
+#    When I make a POST request to "/signup/basic/context.id/company/context.id"
